@@ -129,11 +129,7 @@ export default {
     axios.get('http://localhost:3000/api/todos/').then(({ data }) => {
       this.todos = data.todos.reverse();
     }).catch((err) => {
-      if (err.response) {
-        this.errorMessage = err.response.data.message;
-      } else {
-        this.errorMessage = 'ネットに接続がされていない、もしくはサーバーとの接続がされていません。ご確認ください。';
-      }
+      this.showError(err);
     });
   },
   methods: {
